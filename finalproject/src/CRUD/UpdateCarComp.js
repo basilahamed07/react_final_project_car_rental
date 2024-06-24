@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const UpdateCarComp = () => {
-    const {carid} = useParams();
+    const {id} = useParams();
     const nav = useNavigate()
     const [itemData,setItemData] = useState({
         carid:"",
@@ -21,48 +21,71 @@ const UpdateCarComp = () => {
     }
     const updateRecord = (event)=>{
         event.preventDefault();
-        axios.put(`http://localhost:8888/car/${carid}`,itemData).then(()=>{
+        axios.put(`http://localhost:8888/car/${id}`,itemData).then(()=>{
             window.alert("Record Updated Successsfully");
             nav('/adminDashboard');
         }).catch((error)=>{})
     }
     useEffect(()=>{
-        axios.get(`http://localhost:8888/car/${carid}`).then((res)=>{
-            // console.log(res.data);
+        axios.get(`http://localhost:8888/car/${id}`).then((res)=>{
+            console.log(res.data);
             setItemData(res.data);
         }).catch((error)=>{})
     },[])
     return (
         <div>
-            <h2>This is Car Update Component</h2>
-            <div className='row'>
-              <div className='col-sm-3'></div>
-              <div className='col-sm-6'>
-            
-              <form onSubmit={updateRecord}>
-                 <label className='form-label'>Enter Car Name</label>
-                 <input type='text' name="carname" onChange={inputChangeHandler} value={itemData.carname} className='form-control' />
-            
-            
-                 <label className='form-label'>Enter DriveType </label>
-                 <input type='text' name="drivingtype" onChange={inputChangeHandler} value={itemData.drivingtype} className='form-control' />
-                
-                 <label className='form-label'>Enter Rank </label>
-                 <input type='text' name="carrank" onChange={inputChangeHandler} value={itemData.carrank} className='form-control' />
-                
-                 <label className='form-label'>Enter Model </label>
-                 <input type='text' name="carmodel" onChange={inputChangeHandler} value={itemData.carmodel} className='form-control' />
-                
-                 <label className='form-label'>Enter Image </label>
-                 <input type='image' src={itemData.image} name="carimage" onChange={inputChangeHandler} value={itemData.carimage} className='form-control' />
-                
-                 <button type='submit' className='btn btn-primary mt-2'>Submit</button>
-              </form>
+        <h2>UPDATE CAR DETAILS</h2>
+        <div className='row'>
+          <div className='col-sm-3'></div>
+          <div className='col-sm-6'>
+        
+          <form onSubmit={updateRecord}>
+       <label for="carname">Car Name</label>
+       <input type="text" className="form-control" name="carname"  onChange={inputChangeHandler} value={itemData.carname} />
+ 
+  
+       <label for="carprice">Car Price</label>
+       <input type="text" className="form-control" name="price" onChange={inputChangeHandler} value={itemData.price} required/>
+   
+       <label for="carrank">Car Rank</label>
+       <input type="text" className="form-control" name="carrank" onChange={inputChangeHandler} value={itemData.carrank} />
+  
+       <label for="carmodel">Car Model</label>
+       <input type="text" className="form-control" name="carmodel" onChange={inputChangeHandler} value={itemData.carmodel} />
+  
+       <label for="drivingtype">Driving Type</label>
+       <select className="form-control" name="drivingtype" onChange={inputChangeHandler} value={itemData.drivingtype} >
+           <option value="">Select driving type</option>
+           <option value="automatic">Automatic</option>
+           <option value="manual">Manual</option>
+       </select>
+      
 
-              </div>
-              <div className='col-sm-3'></div>
-             </div>
+      
+       <label for="cartype">Car Type</label>
+       <select className="form-control" name="type" onChange={inputChangeHandler} value={itemData.type} >
+           <option value="">Select car type</option>
+           <option value="luxurious">Luxurious</option>
+           <option value="normal">Normal</option>
+       </select>
+       <label for="status">Car Image</label>
+       <input type="text" className="form-control" name="carimage" onChange={inputChangeHandler} value={itemData.carimage} />
+       
+       <label for="status">Car Status</label>
+       <select className="form-control" name="status" onChange={inputChangeHandler} value={itemData.status} >
+           <option value="">Select car Status</option>
+           <option value="Booked">Booked</option>
+           <option value="Not-Booked">Not-Booked</option>
+       </select>
+  
+   <button type="submit" className="btn btn-primary mt-3 form-control">Submit</button>
+</form>
+
+
+          </div>
+          <div className='col-sm-3'></div>
          </div>
+     </div>
     )
 }
 

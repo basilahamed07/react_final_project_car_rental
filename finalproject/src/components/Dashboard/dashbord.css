@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: rent-car;
     src: url(../../resources/bruce-forever-font/Al_Veshion_PersonalUseOnly.otf);
 }
@@ -12,8 +12,8 @@
 
 body {
     background-color: #222222;
-}
-
+} */
+/* 
 input{
     color: black !important;
 }
@@ -30,20 +30,20 @@ input{
 }
 
 td, th{
-    color: #FFD700 !important;
+    color: #FFD700 ;
 }
 
 #buttonss:hover{
     background-color: #FFD700 !important;
     color: #222222 !important;
     
-}
+} */
 
 /* CSS */
 
 
 /* CSS */
-#button-29 {
+/* #button-29 {
   font-size: 16px;
   font-weight: 200;
   letter-spacing: 1px;
@@ -98,7 +98,7 @@ td, th{
 
 #backgound{
     background-color: #222222 !important;
-}
+} */
 
 
 
